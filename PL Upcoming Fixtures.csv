@@ -1,0 +1,11 @@
+﻿match_id,homeTeamId,awayTeamId,home,away,startTime,startTimeUtc,status,Match
+1903177,189,32,Brentford,Manchester United,2025-09-27T12:30:00,2025-09-27T11:30:00Z,6,Brentford vs Manchester United
+1903178,15,211,Chelsea,Brighton,2025-09-27T15:00:00,2025-09-27T14:00:00Z,6,Chelsea vs Brighton
+1903179,162,26,Crystal Palace,Liverpool,2025-09-27T15:00:00,2025-09-27T14:00:00Z,6,Crystal Palace vs Liverpool
+1903183,19,183,Leeds,Bournemouth,2025-09-27T15:00:00,2025-09-27T14:00:00Z,6,Leeds vs Bournemouth
+1903185,167,184,Manchester City,Burnley,2025-09-27T15:00:00,2025-09-27T14:00:00Z,6,Manchester City vs Burnley
+1903188,174,16,Nottingham Forest,Sunderland,2025-09-27T17:30:00,2025-09-27T16:30:00Z,6,Nottingham Forest vs Sunderland
+1903161,30,161,Tottenham,Wolves,2025-09-27T20:00:00,2025-09-27T19:00:00Z,6,Tottenham vs Wolves
+1903175,24,170,Aston Villa,Fulham,2025-09-28T14:00:00,2025-09-28T13:00:00Z,1,Aston Villa vs Fulham
+1903186,23,13,Newcastle,Arsenal,2025-09-28T16:30:00,2025-09-28T15:30:00Z,1,Newcastle vs Arsenal
+1903181,31,29,Everton,West Ham,2025-09-29T20:00:00,2025-09-29T19:00:00Z,1,Everton vs West Ham
