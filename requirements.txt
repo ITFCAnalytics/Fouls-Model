@@ -9,3 +9,4 @@ lxml
 scipy
 streamlit
 selenium
+webdriver-manager
