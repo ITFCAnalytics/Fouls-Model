@@ -8,13 +8,4 @@ beautifulsoup4
 lxml
 scipy
 streamlit
-json
-ast
-os
-unicodedata
-itertools
-time
-beautifulsoup4
-BeautifulSoup
 selenium
-webdriver
