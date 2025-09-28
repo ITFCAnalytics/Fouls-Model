@@ -7,6 +7,8 @@ import unicodedata
 import itertools
 import streamlit as st
 import time
+import bs4
+import selenium
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
