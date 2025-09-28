@@ -7,12 +7,20 @@ import unicodedata
 import itertools
 import streamlit as st
 import time
-import bs4
-import selenium
-from bs4 import BeautifulSoup
+from beautifulsoup4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
-driver = webdriver.Chrome()
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # required for Streamlit Cloud
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+#driver = webdriver.Chrome()
 
 root = os.getcwd() + '/'
 
