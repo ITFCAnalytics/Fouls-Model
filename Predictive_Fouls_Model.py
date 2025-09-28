@@ -7,7 +7,7 @@ import unicodedata
 import itertools
 import streamlit as st
 import time
-from beautifulsoup4 import BeautifulSoup
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
