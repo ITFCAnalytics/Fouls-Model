@@ -9,35 +9,25 @@ import streamlit as st
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 
-chrome_options = Options()
-chrome_options.add_argument("--headless")  # required for Streamlit Cloud
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
-
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-
-#driver = webdriver.Chrome()
+driver = webdriver.Chrome()
 
 root = os.getcwd() + '/'
 
 #df = pd.read_csv(f'/Users/scini/Documents - Local/PL Event Data.csv')
-df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/PL_Event_Data.parquet')
+df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/PL_Event_Data.parquet')
 #formation_df = pd.read_csv(f'/Users/scini/Documents - Local/PL Formations.csv')
-formation_df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/PL_Formations.parquet')
+formation_df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/PL_Formations.parquet')
 #referee_df = pd.read_csv(f'/Users/scini/Documents - Local/RefereeStatistics.csv')
-referee_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/RefereeStatistics.csv')
+referee_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/RefereeStatistics.csv')
 #team_data_df = pd.read_csv(f'/Users/scini/Documents - Local/PL Team Data.csv')
-team_data_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/PL%20Team%20Data.csv')
+team_data_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/PL%20Team%20Data.csv')
 #teamId_mapping_df = pd.read_csv(f'/Users/scini/Documents - Local/TeamIDMapping.csv')
 teamId_mapping_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/TeamIDMapping.csv')
 #metrics_file = pd.read_csv(f'{root}Final FBRef All Leagues.csv')
 metrics_file = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/Final_FBRef_All_Leagues.parquet')
 #fixture_df = pd.read_csv(f'/Users/scini/Documents - Local/PL Upcoming Fixtures.csv')
-fixture_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/PL%20Upcoming%20Fixtures.csv')
+fixture_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/d20d23a2d5ff58128445284d5d969882691621f1/PL%20Upcoming%20Fixtures.csv')
 
 # select fixture to scrape lineups from
 unique_fixtures = fixture_df['Match'].sort_values().unique()
@@ -48,6 +38,7 @@ season = '2025-2026'
 
 ### WhoScored Season Scraper with retries and incremental updates
 
+#@st.cache_data
 def load_formation_ref_data(match_id, season, max_retries=1, retry_delay=10):
     """
     Scrape WhoScored formation and referee data with retries and incremental updates.
@@ -121,6 +112,7 @@ def load_formation_ref_data(match_id, season, max_retries=1, retry_delay=10):
 
 full_df = load_formation_ref_data(match_id, season, max_retries=3, retry_delay=10)
 
+#@st.cache_data
 def remove_accents(text):
     if pd.isna(text):
         return text  # keep NaN as is
@@ -221,6 +213,7 @@ minutes_df = metrics_file[['Player', 'Squad', 'Season', 'MP', 'Min']]
 #     .reset_index()
 # )
 
+#@st.cache_data
 def calc_weighted_features(df, group_cols, season_col="Season", 
                            weight_current=0.6, weight_prev=0.4):
     """
@@ -283,6 +276,7 @@ opp_team_data_df = team_data_df.copy()
 
 opp_team_data_df = opp_team_data_df.rename(columns={"teamId": "oppTeamId"})
 
+#@st.cache_data
 def closest_players_avg_positions(teamId_1, lineup_teamId_1, teamId_2, lineup_teamId_2, team_mapping_df, current_season):
     """
     Finds closest build-up players to pressing players, using only the current and previous season.
@@ -389,6 +383,7 @@ def closest_players_avg_positions(teamId_1, lineup_teamId_1, teamId_2, lineup_te
 
     return pressing_df
 
+#@st.cache_data
 def reverse_closest_players_avg_positions(teamId_1, lineup_teamId_1, teamId_2, lineup_teamId_2, team_mapping_df, current_season):
     """
     Finds closest pressing players to build up players, using only the current and previous season.
@@ -576,6 +571,7 @@ formation_mapping = {
 
 import ast
 
+#@st.cache_data
 def add_team_ids_to_formations(formation_df, player_team_df):
     """
     Adds teamId_x and teamId_y to formation_df using player_team_df.
@@ -633,6 +629,7 @@ def add_team_ids_to_formations(formation_df, player_team_df):
 
     return formation_df
 
+#@st.cache_data
 def closest_players_formations(row, formation_mapping, player_team_df):
     """
     Given one row of the formations dataframe, find closest opponent matchups
@@ -741,7 +738,8 @@ def closest_players_formations(row, formation_mapping, player_team_df):
     combined_df['refereeName'] = combined_df['refereeName'].astype("string")
     
     return combined_df
-    
+
+#@st.cache_data    
 def build_player_matchup_df(
     avg_positions_df,
     formations_df,
@@ -844,6 +842,7 @@ def build_player_matchup_df(
 
     return combined
 
+#@st.cache_data
 def build_fouled_player_matchup_df(
     avg_positions_df,
     formations_df,
@@ -1112,6 +1111,7 @@ reverse_combined_df_all_matches = pd.concat(reverse_all_matches_combined, ignore
 
 #reverse_combined_df_all_matches.head(30)
 
+#@st.cache_data
 def prepare_future_features_and_X(future_df, trained_feature_columns, verbose=True):
     """
     Prepares a future/unseen match DataFrame for prediction with the trained model.
@@ -1147,6 +1147,7 @@ def prepare_future_features_and_X(future_df, trained_feature_columns, verbose=Tr
     
     return X_future, future_df_prepared
 
+#@st.cache_data
 def reverse_prepare_future_features_and_X(future_df, trained_feature_columns, verbose=True):
     """
     Prepares a future/unseen match DataFrame for prediction with the trained model.
@@ -1184,6 +1185,7 @@ def reverse_prepare_future_features_and_X(future_df, trained_feature_columns, ve
     
     return X_future, future_df_prepared
 
+#@st.cache_data
 def merge_features_and_target(combined_df, fouls_df, verbose=True):
     """
     Merge feature table (combined_df) with foul targets (fouls_df).
@@ -1249,6 +1251,7 @@ def merge_features_and_target(combined_df, fouls_df, verbose=True):
 
     return X
 
+#@st.cache_data
 def reverse_merge_features_and_target(combined_df, fouls_df, verbose=True):
     """
     Merge feature table (combined_df) with foul targets (fouls_df).
@@ -1314,6 +1317,7 @@ def reverse_merge_features_and_target(combined_df, fouls_df, verbose=True):
 
     return X
 
+#@st.cache_data
 def prepare_training_data(merged_df, verbose=True):
     """
     Prepares feature matrix X and target matrix y for model training.
@@ -1346,6 +1350,7 @@ def prepare_training_data(merged_df, verbose=True):
 
     return X, y
 
+#@st.cache_data
 def reverse_prepare_training_data(merged_df, verbose=True):
     """
     Prepares feature matrix X and target matrix y for model training.
@@ -1378,6 +1383,7 @@ def reverse_prepare_training_data(merged_df, verbose=True):
 
     return X, y
 
+#@st.cache_data
 def train_and_evaluate_model(X, y, test_size=0.2, random_state=42, verbose=True):
     """
     Trains a multi-output regression model to predict:
@@ -1601,8 +1607,9 @@ y_future_pred_df = pd.DataFrame(
 future_with_preds = pd.concat([future_with_dummy_targets.reset_index(drop=True),
                                y_future_pred_df.reset_index(drop=True)], axis=1)
 
-minimised_future_with_preds = future_with_preds[['teamName', 'playerName', 'position', 'Pred_Type_Count_Foul', 'oppTeamName', 'closest_build_player', 'Pred_Type_Count_Fouled_Build', 'closest_opponent_playerName', 'closest_opponent_position', 'Pred_Type_Count_Fouled_Opp']]
-minimised_future_with_preds = future_with_preds.sort_values('Pred_Type_Count_Foul', ascending=False)
+future_with_preds['Predicted Fouls - Fouls Per 90'] = (future_with_preds['Pred_Type_Count_Foul'] - future_with_preds['FlsPer90'])
+minimised_future_with_preds = future_with_preds[['teamName', 'playerName', 'position', 'Pred_Type_Count_Foul', 'FlsPer90', 'Predicted Fouls - Fouls Per 90', 'closest_build_player', 'closest_opponent_playerName', 'closest_opponent_position']]
+minimised_future_with_preds = minimised_future_with_preds.sort_values('Pred_Type_Count_Foul', ascending=False)
 
 ### predict fouled
 
@@ -1628,8 +1635,9 @@ reverse_future_with_preds = pd.concat(
      reverse_y_future_pred_df.reset_index(drop=True)], axis=1
 )
 
-minimised_reverse_future_with_preds = reverse_future_with_preds[['teamName', 'playerName', 'position', 'Pred_Type_Count_Fouled', 'oppTeamName', 'closest_pressing_player', 'Pred_Type_Count_Foul_Build', 'closest_opponent_playerName', 'closest_opponent_position', 'Pred_Type_Count_Foul_Opp']]
-minimised_reverse_future_with_preds = reverse_future_with_preds.sort_values('Pred_Type_Count_Fouled', ascending=False)
+reverse_future_with_preds['Predicted Fouled - Fouled Per 90'] = (reverse_future_with_preds['Pred_Type_Count_Fouled'] - reverse_future_with_preds['FldPer90'])
+minimised_reverse_future_with_preds = reverse_future_with_preds[['teamName', 'playerName', 'position', 'Pred_Type_Count_Fouled', 'FldPer90', 'Predicted Fouled - Fouled Per 90', 'closest_pressing_player', 'closest_opponent_playerName', 'closest_opponent_position']]
+minimised_reverse_future_with_preds = minimised_reverse_future_with_preds.sort_values('Pred_Type_Count_Fouled', ascending=False)
 
 # call the foul and fouled df's
 
