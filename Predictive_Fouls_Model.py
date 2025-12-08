@@ -15,19 +15,19 @@ driver = webdriver.Chrome()
 root = os.getcwd() + '/'
 
 #df = pd.read_csv(f'/Users/scini/Documents - Local/PL Event Data.csv')
-df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/PL_Event_Data.parquet')
+df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/91602d0557b2bdcaef0e99335b396e22ab04ad71/PL_Event_Data.parquet')
 #formation_df = pd.read_csv(f'/Users/scini/Documents - Local/PL Formations.csv')
-formation_df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/PL_Formations.parquet')
+formation_df = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/91602d0557b2bdcaef0e99335b396e22ab04ad71/PL_Formations.parquet')
 #referee_df = pd.read_csv(f'/Users/scini/Documents - Local/RefereeStatistics.csv')
 referee_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/RefereeStatistics.csv')
 #team_data_df = pd.read_csv(f'/Users/scini/Documents - Local/PL Team Data.csv')
-team_data_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/eff8e5130115f12cfa2a73d600debd48b7eddd66/PL%20Team%20Data.csv')
+team_data_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/91602d0557b2bdcaef0e99335b396e22ab04ad71/PL%20Team%20Data.csv')
 #teamId_mapping_df = pd.read_csv(f'/Users/scini/Documents - Local/TeamIDMapping.csv')
 teamId_mapping_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/TeamIDMapping.csv')
 #metrics_file = pd.read_csv(f'{root}Final FBRef All Leagues.csv')
 metrics_file = pd.read_parquet(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/8adcbe0b4615610dfff0cb27d8f1c9cf220be881/Final_FBRef_All_Leagues.parquet')
 #fixture_df = pd.read_csv(f'/Users/scini/Documents - Local/PL Upcoming Fixtures.csv')
-fixture_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/d20d23a2d5ff58128445284d5d969882691621f1/PL%20Upcoming%20Fixtures.csv')
+fixture_df = pd.read_csv(f'https://github.com/ITFCAnalytics/Fouls-Model/raw/91602d0557b2bdcaef0e99335b396e22ab04ad71/PL%20Upcoming%20Fixtures.csv')
 
 # select fixture to scrape lineups from
 unique_fixtures = fixture_df['Match'].sort_values().unique()
