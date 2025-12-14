@@ -1,21 +1,11 @@
 ﻿match_id,homeTeamId,awayTeamId,home,away,startTime,startTimeUtc,status,Match
-1903247,183,31,Bournemouth,Everton,2025-12-02T19:30:00,2025-12-02T19:30:00Z,6,Bournemouth vs Everton
-1903251,170,167,Fulham,Manchester City,2025-12-02T19:30:00,2025-12-02T19:30:00Z,6,Fulham vs Manchester City
-1903255,23,30,Newcastle,Tottenham,2025-12-02T20:15:00,2025-12-02T20:15:00Z,6,Newcastle vs Tottenham
-1903256,161,174,Wolves,Nottingham Forest,2025-12-03T19:30:00,2025-12-03T19:30:00Z,6,Wolves vs Nottingham Forest
-1903248,13,189,Arsenal,Brentford,2025-12-03T19:30:00,2025-12-03T19:30:00Z,6,Arsenal vs Brentford
-1903249,211,24,Brighton,Aston Villa,2025-12-03T19:30:00,2025-12-03T19:30:00Z,6,Brighton vs Aston Villa
-1903250,184,162,Burnley,Crystal Palace,2025-12-03T19:30:00,2025-12-03T19:30:00Z,6,Burnley vs Crystal Palace
-1903252,19,15,Leeds,Chelsea,2025-12-03T20:15:00,2025-12-03T20:15:00Z,6,Leeds vs Chelsea
-1903253,26,16,Liverpool,Sunderland,2025-12-03T20:15:00,2025-12-03T20:15:00Z,6,Liverpool vs Sunderland
-1903254,32,29,Manchester United,West Ham,2025-12-04T20:00:00,2025-12-04T20:00:00Z,6,Manchester United vs West Ham
-1903258,24,13,Aston Villa,Arsenal,2025-12-06T12:30:00,2025-12-06T12:30:00Z,6,Aston Villa vs Arsenal
-1903257,183,15,Bournemouth,Chelsea,2025-12-06T15:00:00,2025-12-06T15:00:00Z,6,Bournemouth vs Chelsea
-1903477,31,174,Everton,Nottingham Forest,2025-12-06T15:00:00,2025-12-06T15:00:00Z,6,Everton vs Nottingham Forest
-1903480,167,16,Manchester City,Sunderland,2025-12-06T15:00:00,2025-12-06T15:00:00Z,6,Manchester City vs Sunderland
-1903481,23,184,Newcastle,Burnley,2025-12-06T15:00:00,2025-12-06T15:00:00Z,6,Newcastle vs Burnley
-1903482,30,189,Tottenham,Brentford,2025-12-06T15:00:00,2025-12-06T15:00:00Z,6,Tottenham vs Brentford
-1903479,19,26,Leeds,Liverpool,2025-12-06T17:30:00,2025-12-06T17:30:00Z,6,Leeds vs Liverpool
-1903476,211,29,Brighton,West Ham,2025-12-07T14:00:00,2025-12-07T14:00:00Z,6,Brighton vs West Ham
-1903478,170,162,Fulham,Crystal Palace,2025-12-07T16:30:00,2025-12-07T16:30:00Z,6,Fulham vs Crystal Palace
-1903483,161,32,Wolves,Manchester United,2025-12-08T20:00:00,2025-12-08T20:00:00Z,1,Wolves vs Manchester United
+1903489,26,211,Liverpool,Brighton,2025-12-13T15:00:00,2025-12-13T15:00:00Z,6,Liverpool vs Brighton
+1903487,15,31,Chelsea,Everton,2025-12-13T15:00:00,2025-12-13T15:00:00Z,6,Chelsea vs Everton
+1903486,184,170,Burnley,Fulham,2025-12-13T17:30:00,2025-12-13T17:30:00Z,6,Burnley vs Fulham
+1903484,13,161,Arsenal,Wolves,2025-12-13T20:00:00,2025-12-13T20:00:00Z,6,Arsenal vs Wolves
+1903491,174,30,Nottingham Forest,Tottenham,2025-12-14T14:00:00,2025-12-14T14:00:00Z,6,Nottingham Forest vs Tottenham
+1903492,16,23,Sunderland,Newcastle,2025-12-14T14:00:00,2025-12-14T14:00:00Z,6,Sunderland vs Newcastle
+1903493,29,24,West Ham,Aston Villa,2025-12-14T14:00:00,2025-12-14T14:00:00Z,6,West Ham vs Aston Villa
+1903488,162,167,Crystal Palace,Manchester City,2025-12-14T14:00:00,2025-12-14T14:00:00Z,6,Crystal Palace vs Manchester City
+1903485,189,19,Brentford,Leeds,2025-12-14T16:30:00,2025-12-14T16:30:00Z,1,Brentford vs Leeds
+1903490,32,183,Manchester United,Bournemouth,2025-12-15T20:00:00,2025-12-15T20:00:00Z,1,Manchester United vs Bournemouth
